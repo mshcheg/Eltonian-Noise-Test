@@ -1,1 +1,28 @@
 Maxent Version: 3.3k
+
+R packages:
+dismo -- maxent modeling
+  ** maxent.jar placed in java folder of this package
+raster
+rgdal
+  ** dependecies --  libgdal1-dev libproj-dev
+maptools
+  ** dependency -- rgeos library 
+rJava
+SDMTools
+
+WorldClim Variables:
+version 1.4 
+spatial resolutions: 10, 5 and 2.5 arc-minutes, and 30 arc-seconds (approximately 20, 10, 5 and 1-km cell sizes)
+
+cropped to span latitudes from 12° 47′ N to 34° 46′ S and longitudes from 78° 31′ W to .35° W --- bounding box (-78.51 (Lon), 12.78 (Lat)) -- (-35 (Lon), -34.77 (Lat))
+Extent from biotic layer:
+xmin        : -78.5 
+xmax        : -34 
+ymin        : -34.75 
+ymax        : 12.79167 
+
+
+nine abiotic BIO3, isothermality; BIO4, temperature seasonality; BIO7, annual temperature range; BIO10, mean temperature of the warmest quarter; BIO11, mean temperature of the coldest quarter; BIO14, precipitation of
+the driest month; BIO15, precipitation seasonality; BIO16, precipitation of the wettest quarter; and BIO17, precipitation of the driest quarter.
+
