@@ -7,8 +7,13 @@ library(maptools)
 library(rJava)
 library(SDMTools)
 
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Species Dictionary~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Parrot Species Dictionary~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #1: Aae, 2: Aar, 3: Aau, 4: Ach, 5: Ahy, 6: Axa, 7: Bch, 8: Dno, 9: Fxa, 10: Oma, 11: Pma
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Plant Species Dictionary~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+#1: Astronium_fraxinifolium, 2: Tabebuia_heptaphylla, 3: Tabebuia_impetiginosa, 4: Vitex_cymosa, 5: Psidium_guajava, 6: Orbignya_speciosa, 7: Vatairea_macrocarpa, 8: Buchenavia_capitata, 9: Scheelea_phalerata, 10: Caryocar_brasiliense, 11: Mimosa_claussenii
+#12: Chorisia_speciosa, 13: Inga_vera, 14: Ochroma_pyramidale, 15: Protium_heptaphyllum, 16: Syagrus_romanzoffiana, 17: Melia_azedarach, 18: Syzygium_cumini, 19: Cecropia_pachystachya, 20: Ficus_guaranitica, 21: Mauritia_flexuosa         
+#22: Croton_floribundus, 23: Dicella_bracteosa, 24: Pachystroma_longifolium   
 
 #Create a list of all locality files
 (LocFiles <- file.path("~/PsittaJBI/Pontos2", c("Aae.csv", "Aar.csv", "Aau.csv", "Ach.csv", "Ahy.csv", "Axa.csv", "Bch.csv", "Dno.csv", "Fxa.csv", "Oma.csv", "Pma.csv")))
@@ -38,6 +43,55 @@ Abiotic30sec <- StackClip("/home/mshcheglovitova/PsittaJBI/AbioticVariables/30/"
 Abiotic2.5arc <- StackClip("/home/mshcheglovitova/PsittaJBI/AbioticVariables/2.5/")
 Abiotic5arc <-  StackClip("/home/mshcheglovitova/PsittaJBI/AbioticVariables/5/")
 Abiotic10arc <- StackClip("/home/mshcheglovitova/PsittaJBI/AbioticVariables/10/")
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Plant Species Dictionary~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+#1: Astronium_fraxinifolium, 2: Tabebuia_heptaphylla, 3: Tabebuia_impetiginosa, 4: Vitex_cymosa, 5: Psidium_guajava, 6: Orbignya_speciosa, 7: Vatairea_macrocarpa, 8: Buchenavia_capitata, 9: Scheelea_phalerata, 10: Caryocar_brasiliense, 11: Mimosa_claussenii
+#12: Chorisia_speciosa, 13: Inga_vera, 14: Ochroma_pyramidale, 15: Protium_heptaphyllum, 16: Syagrus_romanzoffiana, 17: Melia_azedarach, 18: Syzygium_cumini, 19: Cecropia_pachystachya, 20: Ficus_guaranitica, 21: Mauritia_flexuosa         
+#22: Croton_floribundus, 23: Dicella_bracteosa, 24: Pachystroma_longifolium   
+
+#Create list of plant model files
+(PlantFiles2.5 <- file.path("~/PsittaJBI/Bioticas Logistic 2.5 arc/", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
+(PlantFiles5 <- file.path("~/PsittaJBI/Bioticas Logistic 5 arc/", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
+(PlantFiles10 <- file.path("~/PsittaJBI/Bioticas Logistic 10 arc/", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
+(PlantFiles30 <- file.path("~/PsittaJBI/Bioticas Logistic 30 sec/", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
+
+aae.pred2.5sec <- stack(Abiotic10arc, PlantFiles10[[1]], PlantFiles10[[2]], PlantFiles10[[3]], PlantFiles10[[4]])
+aar.pred2.5sec <- stack(Abiotic10arc, PlantFiles10[[5]])
+aau.pred2.5sec <- stack(Abiotic10arc, PlantFiles10[[6]], PlantFiles10[[7]])
+ach.pred2.5sec <- stack(Abiotic10arc, PlantFiles10[[8]])
+ahy.pred2.5sec <- stack(Abiotic10arc, PlantFiles10[[9]])
+axa.pred2.5sec <- stack(Abiotic10arc, PlantFiles10[[10]], PlantFiles10[[11]])
+bch.pred2.5sec <- stack(Abiotic10arc, PlantFiles10[[12]], PlantFiles10[[13]], PlantFiles10[[14]], PlantFiles10[[15]], PlantFiles10[[16]])
+dno.pred2.5sec <- stack(Abiotic10arc, PlantFiles10[[17]], PlantFiles10[[18]])
+fxa.pred10arc <- stack(Abiotic10arc, PlantFiles10[[19]], PlantFiles10[[20]])
+oma.pred10arc <- stack(Abiotic10arc, PlantFiles10[[21]])
+pma.pred10arc <- stack(Abiotic10arc, PlantFiles10[[22]], PlantFiles10[[23]], PlantFiles10[[24]])
+
+aae.pred10arc <- stack(Abiotic10arc, PlantFiles10[[1]], PlantFiles10[[2]], PlantFiles10[[3]], PlantFiles10[[4]])
+aar.pred10arc <- stack(Abiotic10arc, PlantFiles10[[5]])
+aau.pred10arc <- stack(Abiotic10arc, PlantFiles10[[6]], PlantFiles10[[7]])
+ach.pred10arc <- stack(Abiotic10arc, PlantFiles10[[8]])
+ahy.pred10arc <- stack(Abiotic10arc, PlantFiles10[[9]])
+axa.pred10arc <- stack(Abiotic10arc, PlantFiles10[[10]], PlantFiles10[[11]])
+bch.pred10arc <- stack(Abiotic10arc, PlantFiles10[[12]], PlantFiles10[[13]], PlantFiles10[[14]], PlantFiles10[[15]], PlantFiles10[[16]])
+dno.pred10arc <- stack(Abiotic10arc, PlantFiles10[[17]], PlantFiles10[[18]])
+fxa.pred10arc <- stack(Abiotic10arc, PlantFiles10[[19]], PlantFiles10[[20]])
+oma.pred10arc <- stack(Abiotic10arc, PlantFiles10[[21]])
+pma.pred10arc <- stack(Abiotic10arc, PlantFiles10[[22]], PlantFiles10[[23]], PlantFiles10[[24]])
+
+aae.pred30arc <- stack(Abiotic30arc, PlantFiles30[[1]], PlantFiles30[[2]], PlantFiles30[[3]], PlantFiles30[[4]])
+aar.pred30arc <- stack(Abiotic30arc, PlantFiles30[[5]])
+aau.pred30arc <- stack(Abiotic30arc, PlantFiles30[[6]], PlantFiles30[[7]])
+ach.pred30arc <- stack(Abiotic30arc, PlantFiles30[[8]])
+ahy.pred30arc <- stack(Abiotic30arc, PlantFiles30[[9]])
+axa.pred30arc <- stack(Abiotic30arc, PlantFiles30[[10]], PlantFiles30[[11]])
+bch.pred30arc <- stack(Abiotic30arc, PlantFiles30[[12]], PlantFiles30[[13]], PlantFiles30[[14]], PlantFiles30[[15]], PlantFiles30[[16]])
+dno.pred30arc <- stack(Abiotic30arc, PlantFiles30[[17]], PlantFiles30[[18]])
+fxa.pred30arc <- stack(Abiotic30arc, PlantFiles30[[19]], PlantFiles30[[20]])
+oma.pred30arc <- stack(Abiotic30arc, PlantFiles30[[21]])
+pma.pred30arc <- stack(Abiotic30arc, PlantFiles30[[22]], PlantFiles30[[23]], PlantFiles30[[24]])
+
+
 
 #run maxent models 
 for (i in 1:11){
