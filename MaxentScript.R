@@ -18,7 +18,7 @@ Locs <- lapply(LocFiles, function(x) read.csv(x, h=T))
 #function for stacking and cropping rasters 
 StackClip <- function(directory){
 	#Create list of abiotic raster files to stack
-	(RasterList <- (dir(path=directory, pattern="*.bil"))
+	(RasterList <- (dir(path=directory, pattern="*.bil")))
 	#Concatonate path with file name
 	RasterPath <- lapply(RasterList, function(x) paste(directory, x, sep =""))
 	#Stack rasters
@@ -44,10 +44,17 @@ Abiotic10 <- StackClip("/home/mshcheglovitova/PsittaJBI/AbioticVariables/10/")
 #22: Croton_floribundus, 23: Dicella_bracteosa, 24: Pachystroma_longifolium   
 
 #Create list of plant model files
-(PlantFiles2.5 <- file.path("~/PsittaJBI/Bioticas Logistic 2.5 arc/", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
-(PlantFiles5 <- file.path("~/PsittaJBI/Bioticas Logistic 5 arc/", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
-(PlantFiles10 <- file.path("~/PsittaJBI/Bioticas Logistic 10 arc/", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
-(PlantFiles30 <- file.path("~/PsittaJBI/Bioticas Logistic 30 sec/", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
+(PlantFiles2.5 <- file.path("~/PsittaJBI/Bioticas Logistic 2.5 arc2", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
+
+#The 5 arc plant models do not have the same extent as the other models, the 5 arc abiotic predictors need to be clipped
+(PlantFiles5 <- file.path("~/PsittaJBI/Bioticas Logistic 5 arc2", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
+
+#The 10 arc plant models do not have the same extent as the other models, the 10 arc abiotic predictors need to be clipped
+(PlantFiles10 <- file.path("~/PsittaJBI/Bioticas Logistic 10 arc2", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
+
+
+#Plant grids were generated in MaxEnt for 30 arc was getting error "Error in if (prj == "GEOGRAPHIC") { : missing value where TRUE/FALSE needed" reading in as raster. Reran models through R and put in Bioticas Logistic 30 sec2 
+(PlantFiles30 <- file.path("~/PsittaJBI/Bioticas Logistic 30 sec2", c("Astronium_fraxinifolium.grd", "Tabebuia_heptaphylla.grd", "Tabebuia_impetiginosa.grd", "Vitex_cymosa.grd", "Psidium_guajava.grd", "Orbignya_speciosa.grd", "Vatairea_macrocarpa.grd", "Buchenavia_capitata.grd", "Scheelea_phalerata.grd", "Caryocar_brasiliense.grd", "Mimosa_claussenii.grd", "Chorisia_speciosa.grd", "Inga_vera.grd", "Ochroma_pyramidale.grd", "Protium_heptaphyllum.grd", "Syagrus_romanzoffiana.grd", "Melia_azedarach.grd", "Syzygium_cumini.grd", "Cecropia_pachystachya.grd", "Ficus_guaranitica.grd", "Mauritia_flexuosa.grd", "Croton_floribundus.grd", "Dicella_bracteosa.grd", "Pachystroma_longifolium.grd"))) 
 
 Aae.AB2.5 <- stack(Abiotic2.5, PlantFiles2.5[[1]], PlantFiles2.5[[2]], PlantFiles2.5[[3]], PlantFiles2.5[[4]])
 Aar.AB2.5 <- stack(Abiotic2.5, PlantFiles2.5[[5]])
@@ -98,15 +105,15 @@ Oma.AB30 <- stack(Abiotic30, PlantFiles30[[21]])
 Pma.AB30 <- stack(Abiotic30, PlantFiles30[[22]], PlantFiles30[[23]], PlantFiles30[[24]])
 
 MaxEntAnalysis <- function(predictor, locs, species, directory){
+	print(species)
 	#Run Maxent Model -- Remember to change settings!	
-	MaxentModel <- maxent(predictor, locs, args=c("randomtestpoints=25", "randomseed"), directory)
-	r.A <- predict(MaxentModel,predictor)
-	writeRaster(r,filename=paste(directory, species, ".grd", sep=""))
-	png(file=paste(directory, species, ".png", sep=""))
+	MaxentModel <- maxent(predictor, locs, args=c("randomtestpoints=25", "randomseed"), path=directory)
+	r <- predict(MaxentModel,predictor)
+	writeRaster(r,filename=paste(directory, ".grd", sep=""), overwrite=T)
+	pdf(file=paste(directory, ".pdf", sep=""))
 	plot(r)
 	points(locs, col="red", cex=1, pch=16)
 	dev.off()
-
 	#Normalize raster 
 	sum <- cellStats(r, stat="sum")
 	r.norm <- calc(r, fun=function(x){x/sum})
@@ -116,35 +123,45 @@ MaxEntAnalysis <- function(predictor, locs, species, directory){
 
 I.Values <- data.frame(Species=NA, Resolution=NA, I=NA)
 
+WorkingDir <- "/home/mshcheglovitova/PsittaJBI/MS_R_Tests"
+dir.create(file.path(WorkingDir), showWarnings = FALSE)
+setwd(file.path(WorkingDir))
+
 #run maxent models 
 k <- 1
 for (i in 1:11){
 	SpName <- Locs[[i]]$Species[1]
+	print(paste("Beginning to process", SpName, sep=" ")) 
 	for (j in c('2.5', '5', '10', '30')){
 		AB.Pred <- paste(SpName,".AB",j, sep="")
 		A.Pred <- paste("Abiotic",j, sep="")
+		print(paste("On resolution", j, sep=" "))
 		#Run Abiotic model
-		norm.A <- MaxEntAnalysis(eval(parse(text=A.Pred)), Locs[[i]][,2:3], paste("/home/mshcheglovitova/PsittaJBI/MaxentModels",j,"_Abiotic/", SpName, sep="")) 	
+		norm.A <- MaxEntAnalysis(eval(parse(text=A.Pred)), Locs[[i]][,2:3], SpName, paste("MaxentModels",j,"_Abiotic/", SpName, sep="")) 	
 		#Run Abiotic + Biotic model
-		norm.AB <- MaxEntAnalysis(eval(parse(text=AB.Pred)), Locs[[i]][,2:3], paste("/home/mshcheglovitova/PsittaJBI/MaxentModels",j,"_AbioticBiotic/", SpName, sep=""))
+		norm.AB <- MaxEntAnalysis(eval(parse(text=AB.Pred)), Locs[[i]][,2:3], SpName, paste("MaxentModels",j,"_AbioticBiotic/", SpName, sep=""))
 		
 		#Calculate Difference Grid
 		r.diff <- norm.A - norm.AB
-		
+
 		#Plot difference grid
-		png(file=paste("/home/mshcheglovitova/PsittaJBI/MaxentModels",j,"_Comparison/", SpName, ".png", sep=""))
+		myDir <- paste("MaxentModels",j,"_Comparison/", sep="")		
+		dir.create(file.path(myDir), showWarnings = FALSE)		
+		pdf(file=paste(myDir, SpName, ".pdf", sep=""), width=11, height=8)
 		par(mfrow=c(1,3))
-		image(norm.A, main="Normalized Abiotic")
-		image(norm.AB, main="Normalized Abiotic and Biotic")
-		image(r.diff, main="Normalized Difference: Abiotic - Abiotic and Biotic")
+		plot(norm.A, main="Normalized Abiotic", legend=F)
+		plot(norm.AB, main="Normalized Abiotic and Biotic", legend=F)
+		plot(r.diff, main="Normalized Difference: Abiotic - Abiotic and Biotic", legend=T)
 		dev.off()
 		
 		#Calculate I values 
 		IValue <- Istat(norm.A, norm.AB)	
 
-		I.Values[k,] <- c(SpName, j, IValue)
+		I.Values[k,] <- c(paste(SpName), j, IValue)
 		k <- k+1		
 	} 	
+    print(paste("Finished processing", SpName, sep=" "))
 }
 
+write.csv(I.Values, file="IValues.csv")
 

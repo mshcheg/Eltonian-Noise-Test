@@ -1,0 +1,89 @@
+
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> options(java.parameters = "-Xmx8g" )
+> Sys.setenv(NOAWT=TRUE)
+> library(raster)
+Loading required package: sp
+> library(dismo)
+> library(rgdal)
+rgdal: version: 0.8-14, (SVN revision 496)
+Geospatial Data Abstraction Library extensions to R successfully loaded
+Loaded GDAL runtime: GDAL 1.10.1, released 2013/08/26
+Path to GDAL shared files: /usr/share/gdal/1.10
+Loaded PROJ.4 runtime: Rel. 4.8.0, 6 March 2012, [PJ_VERSION: 480]
+Path to PROJ.4 shared files: (autodetected)
+> library(maptools)
+Checking rgeos availability: TRUE
+> library(rJava)
+> library(SDMTools)
+SDMTools 1.1-13 (2012-11-08)
+
+Attaching package: ‘SDMTools’
+
+The following object is masked from ‘package:raster’:
+
+    distance
+
+> 
+> 
+> #function for stacking and cropping rasters 
+> StackClip <- function(directory){
++ 	#Create list of abiotic raster files to stack
++ 	(RasterList <- (dir(path=directory, pattern="*.bil")))
++ 	#Concatonate path with file name
++ 	RasterPath <- lapply(RasterList, function(x) paste(directory, x, sep =""))
++ 	#Stack rasters
++ 	RasterStack <-stack(RasterPath)
++ 
++ 	#set extent for cropping rasters
++ 	#notation -- (xmin, xmax, ymin, ymax)
++ 	e <- extent(-78.5,-34, -34.75, 12.79167)
++ 
++ 	#crop the stack
++ 	RasterExtent <- crop(RasterStack, e)
++ 	return(RasterExtent)
++ }
+> 
+> Abiotic2.5 <- StackClip("/home/mshcheglovitova/PsittaJBI/AbioticVariables/2.5/")
+> 
+> occ.sps <- list.files(paste("~/PsittaJBI/Pontos Plantas/",sep=""),pattern="csv")
+> splist <-unlist(lapply(occ.sps, FUN = strsplit, split=("\\.csv")))
+> 
+> i=1
+> 
+> for (i in 1:length(occ.sps)){
++   sp.file <- read.csv(paste("~/PsittaJBI/Pontos Plantas/", occ.sps[i],sep=""),h=T)
++   sp.occ <- sp.file
++   me <- maxent(Abiotic2.5, sp.occ, path=paste("/home/mshcheglovitova/PsittaJBI/Modelos Plantas 2.5 arc2/", splist[i], sep=""))
++   r <- predict(me,Abiotic2.5)
++   writeRaster(r,filename=paste("~/PsittaJBI/Bioticas Logistic 2.5 arc2/", splist[i], ".grd", sep=""), overwrite=T)
++ }
+Fontconfig warning: "/etc/fonts/conf.d/65-droid-sans-fonts.conf", line 103: Having multiple values in <test> isn't supported and may not work as expected
+Fontconfig warning: "/etc/fonts/conf.d/65-droid-sans-fonts.conf", line 138: Having multiple values in <test> isn't supported and may not work as expected
+There were 15 warnings (use warnings() to see them)
+> 
+> 
+> 
+> 
+> proc.time()
+    user   system  elapsed 
+2022.422   11.556 1983.553 
